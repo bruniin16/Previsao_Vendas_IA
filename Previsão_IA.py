@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 
-df = pd.read_csv(r".\advertising.csv")
+df = pd.read_csv("advertising.csv")
 
 ia1 = RandomForestRegressor()
 ia2 = LinearRegression()
@@ -25,8 +25,8 @@ porcentagem_ia2 = metrics.r2_score(y_teste, result_ia2)
 print(f"Certeza da IA1: {porcentagem_ia1:.2%}")
 print(f"Certeza da IA2: {porcentagem_ia2:.2%}")
 
-val_prox_mes = pd.read_csv(r".\novos.csv")
+val_prox_mes = pd.read_csv("novos.csv")
 previsao = ia1.predict(val_prox_mes)
 val_prox_mes["Vendas"] = previsao
-val_prox_mes.to_excel(r".\vendasnovas.xlsx", index=False)
+val_prox_mes.to_excel("vendasnovas.xlsx", index=False)
 print(val_prox_mes)
